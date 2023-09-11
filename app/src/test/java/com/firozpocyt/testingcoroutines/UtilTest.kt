@@ -1,6 +1,7 @@
 package com.firozpocyt.testingcoroutines
 
 import kotlinx.coroutines.test.runTest
+import org.junit.Assert
 import org.junit.Rule
 import org.junit.Test
 
@@ -15,7 +16,9 @@ class UtilTest {
     fun testGetUser(){
         val sut = Util(mainCoroutineRule.testDispatcher)
         runTest {
-        sut.getUser()
+            sut.getAddressDetails()
+            mainCoroutineRule.testDispatcher.scheduler.advanceUntilIdle()
+            Assert.assertEquals(true, sut.globalArg)
         }
     }
 

@@ -27,4 +27,11 @@ class Util(private val dispatcher: CoroutineDispatcher) {
         }
         return "User - Address"
     }
+
+    var globalArg = false
+    fun getAddressDetails(){
+        CoroutineScope(dispatcher).launch {
+            globalArg = true
+        }
+    }
 }
